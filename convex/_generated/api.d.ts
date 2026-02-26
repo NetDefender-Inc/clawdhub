@@ -9,6 +9,7 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as commentModeration from "../commentModeration.js";
 import type * as comments from "../comments.js";
 import type * as crons from "../crons.js";
 import type * as devSeed from "../devSeed.js";
@@ -38,6 +39,7 @@ import type * as lib_apiTokenAuth from "../lib/apiTokenAuth.js";
 import type * as lib_badges from "../lib/badges.js";
 import type * as lib_batching from "../lib/batching.js";
 import type * as lib_changelog from "../lib/changelog.js";
+import type * as lib_commentScamPrompt from "../lib/commentScamPrompt.js";
 import type * as lib_contentTypes from "../lib/contentTypes.js";
 import type * as lib_embeddingVisibility from "../lib/embeddingVisibility.js";
 import type * as lib_embeddings from "../lib/embeddings.js";
@@ -101,6 +103,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  commentModeration: typeof commentModeration;
   comments: typeof comments;
   crons: typeof crons;
   devSeed: typeof devSeed;
@@ -130,6 +133,7 @@ declare const fullApi: ApiFromModules<{
   "lib/badges": typeof lib_badges;
   "lib/batching": typeof lib_batching;
   "lib/changelog": typeof lib_changelog;
+  "lib/commentScamPrompt": typeof lib_commentScamPrompt;
   "lib/contentTypes": typeof lib_contentTypes;
   "lib/embeddingVisibility": typeof lib_embeddingVisibility;
   "lib/embeddings": typeof lib_embeddings;

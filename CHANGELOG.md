@@ -4,6 +4,7 @@
 
 ### Added
 - Moderation: add comment reporting with per-user active report caps, unique reporter/target enforcement, and auto-hide on the 4th unique report.
+- Moderation: add AI-driven comment scam backfill (`commentModeration:*`) with persisted verdict/confidence/explainer metadata and strict auto-ban for `certain_scam` + `high` confidence.
 - Admin: add manual unban for banned users (clears `deletedAt` + `banReason`, audit log entry). Revoked API tokens stay revoked.
 - Admin: bulk restore skills from GitHub backup; reclaim squatted slugs via v1 endpoints + internal tooling (#298) (thanks @autogame-17).
 - Users: add `trustedPublisher` flag and admin mutations to bypass pending-scan auto-hide for trusted publishers (#298) (thanks @autogame-17).
@@ -14,6 +15,7 @@
 
 ### Changed
 - Security/docs: document comment reporting/auto-hide behavior alongside existing skill reporting rules.
+- Security/moderation: add bounded explainable auto-ban reasons for scam comments and protect moderator/admin accounts from automated bans.
 - Quality gate: language-aware word counting (`Intl.Segmenter`) and new `cjkChars` signal to reduce false rejects for non-Latin docs.
 - Jobs: run skill stat event processing every 5 minutes (was 15).
 - API performance: batch resolve skill/soul tags in v1 list/get endpoints (fewer action->query round-trips) (#112) (thanks @mkrokosz).

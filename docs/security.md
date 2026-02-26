@@ -39,6 +39,21 @@ read_when:
 - Skills directory supports an optional "Hide suspicious" filter to exclude
   active-but-flagged (`flagged.suspicious`) entries from browse/search results.
 
+## AI comment scam backfill
+
+- Moderators/admins can run a comment backfill scanner to classify scam comments with OpenAI.
+- Scanner stores per-comment moderation metadata:
+  - `scamScanVerdict`: `not_scam | likely_scam | certain_scam`
+  - `scamScanConfidence`: `low | medium | high`
+  - explanation/evidence/model/check timestamp fields on `comments`.
+- Auto-ban trigger is intentionally strict:
+  - only `certain_scam` with `high` confidence can trigger account ban.
+  - moderator/admin accounts are never auto-banned by this pipeline.
+- Ban reason is bounded to 500 chars and includes concise evidence + comment/skill IDs.
+- CLI run examples:
+  - one-shot: `npx convex run commentModeration:backfillCommentScamModeration '{"batchSize":25,"maxBatches":20}'`
+  - background chain: `npx convex run commentModeration:scheduleCommentScamModeration '{"batchSize":25}'`
+
 ## Bans
 
 - Banning a user:
